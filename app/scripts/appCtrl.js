@@ -19,7 +19,11 @@
                         title: 'Need to work',
                         type: 2
                     }
-                ]
+                ],
+                newItem: {
+                    title: '',
+                    type: 1
+                }
             },
             {
                 title: 'Not To Be',
@@ -32,8 +36,14 @@
                         title: 'Can fly on wings (probably)',
                         type: 1
                     }
-                ]
+                ],
+                newItem: {
+                    title: '',
+                    type: 1
+                }
             }
         ];
+
+        $scope.typeStrings = [, 'pros', 'cons'];
     }]);
 }());
