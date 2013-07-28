@@ -1,0 +1,57 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Pros&amp;Cons</title>
+        <meta name="description" content="Pros&amp;Cons - a simple way to compare decisions">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/main.css">
+        <script src="scripts/vendor/jquery.js"></script>
+        <script src="scripts/vendor/angular.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/appCtrl.js"></script>
+        <script src="scripts/listCtrl.js"></script>
+        <script src="scripts/selectDrv.js"></script>
+    </head>
+    <body ng-app="ProsCons">
+        <header class="SiteHeader">
+            <h1 class="SiteHeader-Title">Pros&amp;Cons</h1>
+        </header>
+
+        <main class="SiteMain">
+            <div ng-controller="AppCtrl" class="ProsCons Group">
+                <div ng-repeat="list in lists" ng-controller="ListCtrl" class="ProsCons-List Col-1-2">
+                    <h1 contenteditable="true">{{list.title}}</h1>
+                    <ul>
+                        <li ng-repeat="item in items | orderBy:'type'">
+                            <form ng-submit="remove(item)" class="ProsCons-ItemForm ProsCons-ItemForm--edit">
+                                <select ng-model="item.type" pros-cons-custom-select="item">
+                                    <option class="pros" value="1" data-glyphicon="thumbs-up">Pros</option>
+                                    <option class="cons" value="2" data-glyphicon="thumbs-down">Cons</option>
+                                </select>
+                                <input type="text" value="{{item.title}}" class="{{strType(item.type)}}">
+                                <button value="del">del<i class="glyphicon glyphicon-minus-sign"></i></button>
+                            </form>
+                        </li>
+                    </ul>
+                    <form ng-submit="add()" class="ProsCons-ItemForm ProsCons-ItemForm--add">
+                        <select ng-model="newItem.type" pros-cons-custom-select="newItem">
+                            <option class="pros" value="1" data-glyphicon="thumbs-up">Pros</option>
+                            <option class="cons" value="2" data-glyphicon="thumbs-down">Cons</option>
+                        </select>
+                        <input type="text" ng-model="newItem.title">
+                        <button type="submit" value="add">add<i class="glyphicon glyphicon-plus-sign"></i></button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="SiteFooter">
+            © Max Shishkin, <a href="">GitHub</a>
+        </footer>
+</body>
+</html>
