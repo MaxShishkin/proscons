@@ -1,0 +1,8 @@
+*.swp
+.DS_Store*
+Thumbs.db
+
+node_modules
+.tmp
+.sass-cache
+app/components
