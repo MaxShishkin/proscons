@@ -27,23 +27,23 @@
                 <div ng-repeat="list in lists" ng-controller="ListCtrl" class="ProsCons-List Col-1-2">
                     <h1 contenteditable="true">{{list.title}}</h1>
                     <ul>
-                        <li ng-repeat="item in items | orderBy:'type'">
+                        <li ng-repeat="item in list.items" ng-class="{separate: $index>0 && item.type!=list.items[$index-1].type}" class="{{typeStrings[item.type]}}">
                             <form ng-submit="remove(item)" class="ProsCons-ItemForm ProsCons-ItemForm--edit">
                                 <select ng-model="item.type" pros-cons-custom-select="item">
                                     <option class="pros" value="1" data-glyphicon="thumbs-up">Pros</option>
                                     <option class="cons" value="2" data-glyphicon="thumbs-down">Cons</option>
                                 </select>
-                                <input type="text" value="{{item.title}}" class="{{strType(item.type)}}">
+                                <input type="text" value="{{item.title}}">
                                 <button value="del">del<i class="glyphicon glyphicon-minus-sign"></i></button>
                             </form>
                         </li>
                     </ul>
                     <form ng-submit="add()" class="ProsCons-ItemForm ProsCons-ItemForm--add">
-                        <select ng-model="newItem.type" pros-cons-custom-select="newItem">
+                        <select ng-model="list.newItem.type" pros-cons-custom-select="list.newItem">
                             <option class="pros" value="1" data-glyphicon="thumbs-up">Pros</option>
                             <option class="cons" value="2" data-glyphicon="thumbs-down">Cons</option>
                         </select>
-                        <input type="text" ng-model="newItem.title">
+                        <input type="text" ng-model="list.newItem.title">
                         <button type="submit" value="add">add<i class="glyphicon glyphicon-plus-sign"></i></button>
                     </form>
                 </div>
