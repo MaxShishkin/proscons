@@ -9,6 +9,7 @@
                 type: $scope.list.newItem.type
             });
             $scope.list.newItem.title = '';
+            $scope.sortItems();
         };
 
         $scope.remove = function (item) {
@@ -20,5 +21,14 @@
                 $scope.list.items.splice(index, 1);
             }
         };
+
+        $scope.sortItems = function () {
+            $scope.list.items.sort(function (item1, item2) {
+                return item1.type - item2.type;
+            });
+        };
+
+        $scope.sortItems();
+        $scope.$watch('list.items', $scope.sortItems, true);
     }]);
 }());

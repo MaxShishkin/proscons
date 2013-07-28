@@ -101,6 +101,17 @@ body
         list-style-type: none
     li
         margin: 1em 0
+        position: relative
+        &.separate
+            padding-top: 2em
+            &:before
+                content: ""
+                width: 2em
+                height: 1px
+                position: absolute
+                top: .5em
+                left: -2em
+                background: #ccc
 
 .ProsCons-ItemForm
     width: 100%
