@@ -1,1 +1,1 @@
-(function(){"use strict";angular.module("ProsCons",[])})();
+(function(){"use strict";Array.isArray||(Array.isArray=function(e){return"[object Array]"===Object.prototype.toString.call(e)}),angular.module("ProsCons",["LocalStorageModule"])})();
