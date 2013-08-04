@@ -90,7 +90,8 @@ module.exports = function (grunt) {
         },
         clean: {
             dist: ['.tmp', '<%= yeoman.dist %>/*'],
-            server: '.tmp'
+            server: '.tmp',
+            ghooks: '.git/hooks'
         },
         jshint: {
             options: {
@@ -246,6 +247,11 @@ module.exports = function (grunt) {
             all: {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
             }
+        },
+        shell: {
+            ghooks: {
+                command: 'mkdir -p .git/hooks; cd .git/hooks; find ../../git-hooks -type f -d 1 | xargs -I {} ln -s {} .'
+            }
         }
     });
 
@@ -288,6 +294,11 @@ module.exports = function (grunt) {
         'uglify',
         'copy',
         'usemin'
+    ]);
+
+    grunt.registerTask('ghooks', [
+        'clean:ghooks',
+        'shell:ghooks'
     ]);
 
     grunt.registerTask('default', [

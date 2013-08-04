@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+./git-hooks/pre-commit-scripts/ascii_and_whitespace
+grunt jshint
