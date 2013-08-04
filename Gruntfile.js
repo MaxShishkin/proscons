@@ -154,8 +154,7 @@ module.exports = function (grunt) {
         /*concat: {
             dist: {}
         },*/
-        // don't use require yet
-        /*requirejs: {
+        requirejs: {
             dist: {
                 // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
@@ -173,7 +172,7 @@ module.exports = function (grunt) {
                     //uglify2: {} // https://github.com/mishoo/UglifyJS2
                 }
             }
-        },*/
+        },
         useminPrepare: {
             html: '<%= yeoman.app %>/index.html',
             options: {
@@ -281,7 +280,7 @@ module.exports = function (grunt) {
         'coffee',
         'compass:dist',
         'useminPrepare',
-        //'requirejs',
+        'requirejs',
         'imagemin',
         'htmlmin',
         'concat',

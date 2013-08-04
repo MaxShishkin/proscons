@@ -1,12 +1,10 @@
-/*global angular*/
-(function () {
+/*global define*/
+
+define([
+    'angular',
+    'localStorageModule'
+], function (angular) {
     'use strict';
 
-    if(!Array.isArray) {
-        Array.isArray = function (vArg) {
-            return Object.prototype.toString.call(vArg) === '[object Array]';
-        };
-    }
-
-    angular.module('ProsCons', ['LocalStorageModule']);
-}());
+    return angular.module('ProsCons', ['LocalStorageModule']);
+});
